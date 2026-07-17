@@ -23,7 +23,7 @@
         // "power-profiles-daemon",
         "cpu",
         "memory",
-        "temperature",
+        // "temperature",
         "backlight",
         // "keyboard-state",
         // "hyprland/language",
