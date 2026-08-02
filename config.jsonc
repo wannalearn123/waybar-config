@@ -1,4 +1,7 @@
 // -*- mode: jsonc -*-
+// Install a Nerd Font for them to display some icons, e.g.:
+//   sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd
+// and add it to the font stack in style.css (before Roboto, after FontAwesome).
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -8,15 +11,15 @@
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "sway/mode",
-        "sway/scratchpad",
+        "hyprland/submap",
+        "hyprland/scratchpad",
         "custom/media"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
-        // "mpd",
+        "mpd",
         "idle_inhibitor",
         "pulseaudio",
         "network",
@@ -59,10 +62,10 @@
             "unlocked": ""
         }
     },
-    "sway/mode": {
+    "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "sway/scratchpad": {
+    "hyprland/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],
@@ -198,22 +201,22 @@
         "max-length": 40,
         "format-icons": {
             "spotify": "",
-            "default": "🎜"
+            "default": ""
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "format": "⏻ ",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        "menu-actions": {
+            "shutdown": "shutdown",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate"
+        }
     }
 }
