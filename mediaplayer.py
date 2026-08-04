@@ -11,63 +11,73 @@ import sys
 import json
 
 
-def print_output(text, player, class_name):
-    if player.startswith("spotify"):
-        icon = "\uf1bc"
+def print_output(text, status):
+    class_name = status.lower() if status else ""
+    if status == "Playing":
+        class_name = "playing"
+    elif status == "Paused":
+        class_name = "paused"
+
+    if text:
+        out = {
+            "text": f"\uf001\u2002\u2002{text}",
+            "class": class_name,
+            "tooltip": f"Now Playing: {text}",
+        }
+        sys.stdout.write(json.dumps(out) + "\n")
     else:
-        icon = "\uf001"
-    out = {
-        "text": f"{icon} {text}",
-        "class": class_name,
-        "tooltip": f"Now Playing: {text}",
-    }
-    sys.stdout.write(f" {json.dumps(out)}\n")
+        sys.stdout.write("\n")
     sys.stdout.flush()
 
 
+player = ""
+
+
 def main():
+    global player
     parser = argparse.ArgumentParser()
     parser.add_argument("--player", default="")
+    parser.add_argument("--command", default="",
+                        help="not used, kept for compatibility")
     args = parser.parse_args()
 
-    filter = args.player if args.player else "audacious,clementine,mpd,spotify,vlc"
+    game = args.player
+    pick = ["-p", game] if game else []
+    player = subprocess.run(
+        ["playerctl", "-l"], capture_output=True, text=True, timeout=5
+    ).stdout.strip()
 
     try:
         result = subprocess.run(
-            [
-                "playerctl",
-                "metadata",
-                "--format",
-                "{{artist}} - {{title}}",
-                "-p",
-                filter,
-            ],
+            ["playerctl", "metadata", "--format",
+                "{{artist}} - {{title}}"] + pick,
             capture_output=True,
             text=True,
             timeout=5,
         )
     except (subprocess.TimeoutExpired, FileNotFoundError):
-        print("")
+        sys.stdout.write("\n")
+        sys.stdout.flush()
         return
 
     if result.returncode != 0:
-        print("")
+        print_output("", "")
         return
 
     text = result.stdout.strip()
 
     try:
         status_result = subprocess.run(
-            ["playerctl", "status", "-p", filter],
+            ["playerctl", "status"] + pick,
             capture_output=True,
             text=True,
             timeout=5,
         )
-        status = status_result.stdout.strip() if status_result.returncode == 0 else "Playing"
+        status = status_result.stdout.strip() if status_result.returncode == 0 else ""
     except (subprocess.TimeoutExpired, FileNotFoundError):
-        status = "Playing"
+        status = ""
 
-    print(text, status)
+    print_output(text, status)
 
 
 if __name__ == "__main__":
