@@ -26,7 +26,7 @@
         // "power-profiles-daemon",
         "cpu",
         "memory",
-        // "temperature",
+        "temperature",
         "backlight",
         // "keyboard-state",
         // "hyprland/language",
@@ -126,7 +126,7 @@
         "format": "{}% "
     },
     "temperature": {
-        // "thermal-zone": 2,
+        "thermal-zone": 8,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
