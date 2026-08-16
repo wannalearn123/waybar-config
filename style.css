@@ -138,6 +138,11 @@ button:hover {
     background-color: #006329;
 }
 
+#battery.warning:not(.charging) {
+    background-color: #fbc02d;
+    color: #000000;
+}
+
 @keyframes blink {
     to {
         background-color: #ffffff;
