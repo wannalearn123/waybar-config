@@ -100,9 +100,9 @@ button:hover {
 #mpd {
     padding: 0 10px;
     color: #ffffff;
-    border: solid 1.5px #33ccff;
+    border: solid 1px #33ccff;
     /* border-image: linear-gradient(to right, #33ccff, #00ff99) 1; */
-    border-radius: 5px;
+    /* border-radius: 5px; */
     /* mask:  */
     /* 	linear-gradient (#000 0 0) padding-box, */
     /* 	linear-gradient (#000 0 0); */
