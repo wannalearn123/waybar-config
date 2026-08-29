@@ -1,11 +1,7 @@
-// -*- mode: jsonc -*-
-// Install a Nerd Font for them to display some icons, e.g.:
-//   sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd
-// and add it to the font stack in style.css (before Roboto, after FontAwesome).
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 25, // Waybar height (to be removed for auto height)
+    // "height": 25, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 6, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -17,7 +13,8 @@
     ],
     "modules-center": [
         // "hyprland/window"
-        "clock"
+		"clock#date",
+        "clock#time"
     ],
     "modules-right": [
         // "mpd",
@@ -115,12 +112,16 @@
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
-    "clock": {
+    "clock#date": {
         // "timezone": "America/New_York",
-        "format": "{:%d %b %Y, %A: %H:%M}",
+        "format": "{:%d %b %Y, %A}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // "format-alt": "{:%Y-%m-%d}"
     },
+	"clock#time": {
+		"format": "{:%I:%M %p}",
+		"tooltip": false
+	},
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
