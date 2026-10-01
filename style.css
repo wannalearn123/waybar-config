@@ -104,7 +104,7 @@ button:hover {
     color: #ffffff;
     border: solid 1.5px #33ccff;
     /* border-image: linear-gradient(to right, #33ccff, #00ff99) 1; */
-    /* border-radius: 5px; */
+    border-radius: 2px;
     /* mask:  */
     /* 	linear-gradient (#000 0 0) padding-box, */
     /* 	linear-gradient (#000 0 0); */
@@ -118,7 +118,7 @@ button:hover {
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 7;
+    margin-left: 10;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
@@ -353,5 +353,5 @@ label:focus {
     background-color: #0069d4;
 }
 #custom-power {
-	margin-right: 7
+	margin-right: 10
 } 
