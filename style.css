@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-    background-color: rgba(37, 27, 27, 0.6);
+    background-color: rgba(37, 27, 27, 0.9);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -104,7 +104,7 @@ button:hover {
     color: #ffffff;
     border: solid 1.5px #ff3333;
     /* border-image: linear-gradient(to right, #33ccff, #00ff99) 1; */
-    border-radius: 2px;
+    border-radius: 1.5px;
     /* mask:  */
     /* 	linear-gradient (#000 0 0) padding-box, */
     /* 	linear-gradient (#000 0 0); */
@@ -142,12 +142,12 @@ button:hover {
 /**/
 #battery.charging, #battery.plugged {
     color: #ffffff;
-    background-color: #006329;
+    background-color: #402a2a;
 }
 
 #battery.warning:not(.charging) {
-    background-color: #fbc02d;
-    color: #000000;
+    background-color: #b33636;
+    color: #ffffff;
 }
 
 @keyframes blink {
@@ -159,7 +159,7 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #690000;
+    background-color: #ff3333;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
@@ -270,9 +270,9 @@ label:focus {
     background-color: #eb4d4b;
 }
 
-#idle_inhibitor {
-    background-color: #402a2a;
-}
+/* #idle_inhibitor { */
+    /* background-color: #402a2a; */
+/* } */
 
 #idle_inhibitor.activated {
     background-color: #e8d0d0;
